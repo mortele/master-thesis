@@ -18,11 +18,9 @@ which will be expanded upon in the next section.
 \par
 We want to find solutions to the non-relativistic time-independent
 Schr\"{o}dinger equation:
-
 \begin{equation}
  \hat{H} \ket{\Psi} = E \ket{\Psi} ,
 \end{equation}
-
 with the Hamiltonian $\hat{H}$ describing a system of nuclei and electrons
 with cartesian coordinates $\bm{R}_a, \ a=1,2,\dots,A$ and $\bm{r}_i, \
 i=1,2,\dots,N$ respectively. The distance between nuclei $a$
@@ -30,8 +28,7 @@ and electron $i$ is given as the euclidean distance
 $R_{ai} = \left| \bm{R}_a - \bm{r}_i \right|$
 and correspondingly for the nuclei-nuclei and electron-electron distances.
 The full Hamiltonian for a set of $N$ electrons and $A$ nuclei
-in atomic units is:
-
+in atomic units is {\color{red} Note what atomic units are, and why we use them? Reference/short note/footnote}:
 \begin{equation}
     \begin{split}
         \hat{H}
@@ -42,7 +39,6 @@ in atomic units is:
         + \sum_{a=1}^A \sum_{b=a+1}^A \frac{Z_a Z_b}{R_{ab}}
     \end{split} .
 \end{equation}
-
 The first two terms describe the kinetic energy operators
 of the electrons and nuclei, with $M_a$ the ratio of the mass
 of nuclei $a$ to the electron mass. The third term describes the
@@ -54,35 +50,30 @@ than the electrons, the electrons can to a good approximation
 be described as moving in the field of fixed nuclei. In practice we
 neglect the kinetic energy terms of the nuclei, while considering
 an averaged effect from the nuclei-nuclei repulsion.
-The nuclei-nuclei repulsion energy averaged over 
+The averages nuclei-nuclei repulsion energy
 adds a constant to the energy
-eigenvalues, but has no effect on the energy eigenfunctions.
+eigenvalues, but has no effect on the energy eigenfunctions. {\color{red} Slight re-phrasing.}
 The remaining terms are known as the electronic Hamiltonian:
-
 \begin{equation}
     \hat{H}_e = -\sum_{i=1}^N \frac{1}{2} \nabla_i^2
     -\sum_{i=1}^N \sum_{a=1}^A \frac{Z_A}{R_{ia}}
     +\sum_{i=1}^N \sum_{j=i+1}^N \frac{1}{r_{ij}} .
 \end{equation}
-
 The electronic wavefunction $\Psi_e = \Psi_e(\{r_i\}; \{R_a\})$
 is a function of the electronic coordinates with a parametric dependence
 on the fixed nucleic coordinates. The electronic energy
 is obtained in the usual way $E_{e} = \braket{\Psi_e | \hat{H}_e |
 \Psi_e} $. The total energy of our system
 must now include the constant nuclear repulsion:
-
 \begin{equation}
  E_{tot} = E_{e} + \sum_{a=1}^A \sum_{b=a+1}^A
-    \frac{Z_a Z_b}{R_{ab}} . 
+    \frac{Z_a Z_b}{R_{ab}} .
 \end{equation}
-
 If one has solved the Schr\"{o}dinger equation for the electronic
 Hamiltonian, one can subsequently solve for the nucleic motion
 using the same trick, i.e. substituting the electronic coordinates
-for their average values, averaged over the electronic wave function.
+for their average values, averaged over the electronic wave function. {\color{red} Explain why this is done? Szabo has a justification for this, that is different from the one he uses to explain why the electronic equation is solved for stationary nuclei.}
 We are then left with a nuclear Hamiltonian $\hat{H}_n$:
-
 \begin{equation}
     \begin{split}
         \hat{H}_n
@@ -97,18 +88,16 @@ We are then left with a nuclear Hamiltonian $\hat{H}_n$:
         + E_{tot} .
     \end{split}
 \end{equation}
-
 Under this approximation the nuclei move on a potential energy
 surface obtained by solving the electronic Hamiltonian.
-We will however remain focused on the electronic structure problem.
+We will however remain focused on the electronic structure problem. {\color{red} Mention that this is the entire basis for your thesis? Nuclei moving on PES found by solving the electronic Schödinger equation \textit{is} ab initio MD.}
 For the electronic Hamiltonian we would like to make one more
 approximation.
-The electronic Hamiltonian further simplifies if instead
+The electronic Hamiltonian further simplifies if, instead
 of considering the relative positions of the nuclei,
 we fix the coordinate system in the center of mass of the nucleus.
 This gives us the final expression we want for the electronic
 Hamiltonian:
-
 \begin{equation}
     \hat{H} = -\sum_{i=1}^N \frac{1}{2} \nabla_i^2
     - \sum_{i=1}^N \frac{Z}{r_{i}} + \sum_{i=1}^N \sum_{j=i+1}^N
@@ -135,7 +124,7 @@ known as the \textit{Hartree product}:
 
 \begin{equation}
  \Psi(\bm{r}_1,\dots,\bm{r}_N) = \psi(\bm{r}_1) \cdot \dots
-    \cdot \psi(\bm{r}_N) . 
+    \cdot \psi(\bm{r}_N) .
 \end{equation}
 
 Since we are dealing with fermions this ansatz fails to satisfy
@@ -171,13 +160,13 @@ Define the one-electron operator of the electronic Hamiltonian as:
 
 \begin{equation}
  \hat{h}_1(\bm{x}_i) = -\frac{1}{2} \nabla_i^2
-    -\frac{Z}{r_i} , 
+    -\frac{Z}{r_i} ,
 \end{equation}
 
 with a twobody interaction term
 
 \begin{equation}
- \hat{v}(\bm{x}_i, \bm{x}_j) = \frac{1}{r_{ij}} , 
+ \hat{v}(\bm{x}_i, \bm{x}_j) = \frac{1}{r_{ij}} ,
 \end{equation}
 
 which allows us to write the electronic Hamiltonian more compactly as:
@@ -211,22 +200,22 @@ where we have introduced an antisymmetrized matrix element:
 
 \begin{equation}
  \braket{ij | \hat{v} | ij}_{AS}
-    = \braket{ij | \hat{v} | ij} - \braket{ij | \hat{v} | ji} , 
+    = \braket{ij | \hat{v} | ij} - \braket{ij | \hat{v} | ji} ,
 \end{equation}
 
 and the shorthand integrals:
 
 \begin{equation}
  \braket{i | \hat{h}_1 | i} =
-    \int d\bm{r} \chi_i^*(\bm{r}) \hat{h}_1 \chi_i(\bm{r}) , 
+    \int d\bm{r} \chi_i^*(\bm{r}) \hat{h}_1 \chi_i(\bm{r}) ,
 \end{equation}
 
 and
 
 \begin{equation}
  \braket{ij | \hat{v} | ij} =
-    \int d\bm{r}_i d\bm{r}_j \chi_i^*(\bm{r}_i) \chi_j^*(\bm{r}_j) 
-    \hat{v} \chi_i(\bm{r}_i) \chi_j(\bm{r}_j) . 
+    \int d\bm{r}_i d\bm{r}_j \chi_i^*(\bm{r}_i) \chi_j^*(\bm{r}_j)
+    \hat{v} \chi_i(\bm{r}_i) \chi_j(\bm{r}_j) .
 \end{equation}
 
 In order to derive the Hartree-Fock equations
@@ -234,7 +223,7 @@ we perform a linear expansion of the spin orbitals
 $\chi$ in terms of a fixed orthogonal basis $\phi$:
 
 \begin{equation}
- \chi_i = \sum_{\nu} C_{i\nu} \phi_{\nu} , 
+ \chi_i = \sum_{\nu} C_{i\nu} \phi_{\nu} ,
 \end{equation}
 
 in principle an infinite sum, but in practice truncated.
@@ -281,7 +270,7 @@ the eigenvalue equation:
 where we have introduced the Fock matrix elements:
 
 \begin{equation}
-\hat{h}_{\alpha\beta}^{HF} = 
+\hat{h}_{\alpha\beta}^{HF} =
 \braket{\alpha | \hat{h}_1 | \beta}
 + \sum_{j}^N \sum_{\delta\eta} C_{j\delta}^* C_{j\eta}
 \braket{\alpha\delta | \hat{v} | \beta\eta}_{AS} .
@@ -368,7 +357,7 @@ by a one-electron density carrying a dependency on only 3 spatial coordinates.
 The electronic Hamiltonian can be rewritten as:
 
 \begin{equation}
- \hat{H} = \hat{F} + \hat{V}_{ne} , 
+ \hat{H} = \hat{F} + \hat{V}_{ne} ,
 \end{equation}
 
 where $\hat{F}$ is an operator consisting of the kinetic energy
@@ -378,13 +367,13 @@ For their second theorem, Hohenberg and Kohn defined
 the universal density-functional:
 
 \begin{equation}
- F[n] = \braket{\Psi[n] | \hat{F} | \Psi[n]} , 
+ F[n] = \braket{\Psi[n] | \hat{F} | \Psi[n]} ,
 \end{equation}
 
 and the total electronic energy functional:
 
 \begin{equation}
- E[n] = F[n] + \int \hat{V}_{ne} n(\bm{r}) d\bm{r} . 
+ E[n] = F[n] + \int \hat{V}_{ne} n(\bm{r}) d\bm{r} .
 \end{equation}
 
 Hohenberg and Kohn showed that the energy functional
@@ -392,7 +381,7 @@ with respect to one-electron densitites $n(\bm{r})$
 is an upper bound to the ground state energy:
 
 \begin{equation}
- E_0 \leq F[n] + \int \hat{V}_{ne} n(\bm{r}) d\bm{r} , 
+ E_0 \leq F[n] + \int \hat{V}_{ne} n(\bm{r}) d\bm{r} ,
 \end{equation}
 
 with equality if and only if the one-electron density
@@ -402,7 +391,7 @@ we vary the total electronic energy functional
 until we reach an energy minimum:
 
 \begin{equation}
- E_{min} = \underset{n}{\min} \ E[n] , 
+ E_{min} = \underset{n}{\min} \ E[n] ,
 \end{equation}
 
 which serves as our best estimate for the ground state
@@ -415,7 +404,7 @@ which yield a fixed density $n$:
 \begin{equation}
  F[n] = \underset{\Psi \rightarrow n}{\min}
     \braket{\Psi | \hat{F} | \Psi}
-    = \braket{\Psi[n] | \hat{F} | \Psi[n]} , 
+    = \braket{\Psi[n] | \hat{F} | \Psi[n]} ,
 \end{equation}
 
 wherein the minima search is performed over wavefunctions
@@ -426,7 +415,7 @@ is known as the \textit{constrained search formulation}.
 Kohn and Sham proposed to decompose $F[n]$ as:
 
 \begin{equation}
- F[n] = T_s[n] + E_{\text{Hxc}}[n] , 
+ F[n] = T_s[n] + E_{\text{Hxc}}[n] ,
 \end{equation}
 
 where $T_s[n]$ is a non-interacting kinetic-energy functional
@@ -435,7 +424,7 @@ which can be defined through the constrained-search formulation:
 \begin{equation}
  T_s[n] = \underset{\Phi \rightarrow n}{\min}
     \braket{\Phi | \hat{T} | \Phi}
-    = \braket{\Phi[n] | \hat{T} | \Phi[n]} , 
+    = \braket{\Phi[n] | \hat{T} | \Phi[n]} ,
 \end{equation}
 
 wherein the minima search is now performed over normalized
@@ -467,7 +456,7 @@ minimized over densities:
 \end{equation}
 
 These equations now involve only a single-determinant wave function,
-which is a large simplification over a variational method involving 
+which is a large simplification over a variational method involving
 multi-determinant wave functions.
 Now a major part of the kinetic energy contribution
 can be treated through the single-determinant wave function,
@@ -481,7 +470,7 @@ The total electronic energy can be expressed in terms of spatial
 orbitals $\phi_i(\bm{r})$ after integrating out the spin variables:
 
 \begin{equation}
-    E[\left\{\phi_i\right\}] 
+    E[\left\{\phi_i\right\}]
     = \sum_i \int \phi_i^* (\bm{r}) (-\frac{1}{2} \nabla^2 + \hat{V}_{ne})
         \phi_i(\bm{r}) d\bm{r} + E_{\text{Hxc}}[n] ,
 \end{equation}
@@ -499,7 +488,7 @@ we introduce the following Lagrangian:
 \begin{equation}
  \mathcal{L} [\left\{\phi_i\right\}]
     = E[\left\{\phi_i\right\}] - \sum_i \epsilon_i
-    \left( \int \phi_i^* (\bm{r}) \phi_i(\bm{r}) d\bm{r} - 1 \right) , 
+    \left( \int \phi_i^* (\bm{r}) \phi_i(\bm{r}) d\bm{r} - 1 \right) ,
 \end{equation}
 
 with $\epsilon_i$ the associated Lagrangian multiplier.
@@ -507,15 +496,15 @@ The energy minimum is where the Lagrangian is stationary
 with respect to the spatial orbitals:
 
 \begin{equation}
- \frac{\partial \mathcal{L}}{\partial \phi_i^* (\bm{r})} = 0 , 
+ \frac{\partial \mathcal{L}}{\partial \phi_i^* (\bm{r})} = 0 ,
 \end{equation}
 
 which gives us the functional derivative:
 
 \begin{equation}
  \left( -\frac{1}{2} \nabla^2 + \hat{V}_{ne} \right) \phi_i(\bm{r})
-    + \frac{\partial E_{\text{Hxc}}[n]}{\partial \phi_i^*} 
-    = \epsilon_i \phi_i(\bm{r}) . 
+    + \frac{\partial E_{\text{Hxc}}[n]}{\partial \phi_i^*}
+    = \epsilon_i \phi_i(\bm{r}) .
 \end{equation}
 
 The second term can be expressed through the chain rule as:
@@ -538,14 +527,14 @@ derivative:
 
 \begin{equation}
  \hat{V}_{\text{Hxc}} = \frac{\partial E_{\text{Hxc}}}{\partial
-    \phi_i^*(\bm{r})} , 
+    \phi_i^*(\bm{r})} ,
 \end{equation}
 
 we arrive at the Kohn-Sham eigenvalue equations:
 
 \begin{equation}
  \left( -\frac{1}{2} \nabla^2 + \hat{V}_{ne} + \hat{V}_{\text{Hxc}}
-    \right) \phi_i(\bm{r}) = \epsilon_i \phi_i (\bm{r}) . 
+    \right) \phi_i(\bm{r}) = \epsilon_i \phi_i (\bm{r}) .
 \end{equation}
 
 The eigenfunctions satisfying these equations are known as the
@@ -553,13 +542,13 @@ Kohn-Sham orbitals, and are eigenfunctions of the Kohn-Sham
 one-electron Hamiltonian:
 
 \begin{equation}
- \hat{h}_{KS} = - \frac{1}{2} \nabla^2 + \hat{V}_{KS} , 
+ \hat{h}_{KS} = - \frac{1}{2} \nabla^2 + \hat{V}_{KS} ,
 \end{equation}
 
 with the Kohn-Sham potential defined as:
 
 \begin{equation}
- \hat{V}_{KS} = \hat{V}_{ne} + \hat{V}_{\text{Hxc}} . 
+ \hat{V}_{KS} = \hat{V}_{ne} + \hat{V}_{\text{Hxc}} .
 \end{equation}
 
 The Kohn-Sham one-electron Hamiltonian defines a system of $N$
@@ -590,13 +579,13 @@ into the exchange potential and the correlation potential:
 \hat{V}_{\text{XC}} = \hat{V}_{\text{X}} + \hat{V}_{\text{C}} .
 \end{equation}
 
-For practical calculation the 
+For practical calculation the
 spatial orbitals are expanded as a linear combination
 of a known basis, such as hydrogen-like functions
 or Gaussian-type orbitals:
 
 \begin{equation}
- \phi_i(\bm{r}) = \sum_{\nu} C_{\nu i} \chi_i (\bm{r}) . 
+ \phi_i(\bm{r}) = \sum_{\nu} C_{\nu i} \chi_i (\bm{r}) .
 \end{equation}
 
 We insert these into the Kohn-Sham equations, multiply
@@ -605,7 +594,7 @@ at the eigenvalue equations:
 
 \begin{equation}
  \sum_{\nu} F_{\mu\nu} C_{\nu i} =
-    \epsilon_i \sum_{\nu} S_{\mu\nu} C_{\nu i} , 
+    \epsilon_i \sum_{\nu} S_{\mu\nu} C_{\nu i} ,
 \end{equation}
 
 where $F_{\mu\nu} = \int \chi_{\mu}^*(\bm{r}) \hat{h}_{KS}
@@ -660,18 +649,18 @@ and finally the exchange-correlation potential contribution:
 The Kohn-Sham equations can be written more compactly as the matrix equation:
 
 \begin{equation}
- FC = SC\epsilon , 
+ FC = SC\epsilon ,
 \end{equation}
 
 where $\epsilon$ is a vector containing the energy eigenvalues
 of the basis elements. The equations are then solved
 iteratively through diagonalization to obtain
-the matrix of coefficients $C$. Once we have obtained the 
+the matrix of coefficients $C$. Once we have obtained the
 coefficients the density $n(\bm{r})$ is calculated as:
 
 \begin{equation}
  n(\bm{r}) = \sum_{\gamma} \sum_{\lambda} P_{\gamma\lambda}
-    \chi_{\gamma}(\bm{r}) \chi_{\lambda}^*(\bm{r}) , 
+    \chi_{\gamma}(\bm{r}) \chi_{\lambda}^*(\bm{r}) ,
 \end{equation}
 
 where the summation is over the number of basis functions $M$.
